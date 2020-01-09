@@ -7,7 +7,6 @@ public class TransferenciaDTO {
     private Long contaOrigem;
     private Long contaDestino;
     private BigDecimal valor;
-    private LocalDate data;
 
     public Long getContaOrigem() {
         return contaOrigem;
@@ -33,12 +32,5 @@ public class TransferenciaDTO {
         this.valor = valor;
     }
 
-    public LocalDate getData() {
-        return data;
-    }
-
-    public void setData(LocalDate data) {
-        this.data = data;
-    }
 }
 

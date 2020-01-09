@@ -6,9 +6,8 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 public class ContaCorrenteDTO {
-
-    @JsonIgnore
-    private Long Id;
+    @NotNull(message = "Informe o número da Conta Corrente")
+    private int conta;
 
     @NotNull(message = "Informe o nome do correntista")
     private String correntista;
@@ -16,18 +15,7 @@ public class ContaCorrenteDTO {
     @NotNull(message = "Informe o código da Agência")
     private int agencia;
 
-    @NotNull(message = "Informe o número da Conta Corrente")
-    private int conta;
-
     private BigDecimal saldo;
-
-    public Long getId() {
-        return Id;
-    }
-
-    public void setId(Long id) {
-        Id = id;
-    }
 
     public String getCorrentista() {
         return correntista;

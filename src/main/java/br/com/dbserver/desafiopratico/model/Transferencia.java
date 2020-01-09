@@ -2,12 +2,13 @@ package br.com.dbserver.desafiopratico.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Transferencia {
     ContaCorrente contaOrigem;
     ContaCorrente contaDestino;
     BigDecimal valor;
-    LocalDate data;
+    LocalDateTime data;
 
     public ContaCorrente getContaOrigem() {
         return contaOrigem;
@@ -33,11 +34,11 @@ public class Transferencia {
         this.valor = valor;
     }
 
-    public LocalDate getData() {
+    public LocalDateTime getData() {
         return data;
     }
 
-    public void setData(LocalDate data) {
+    public void setData(LocalDateTime data) {
         this.data = data;
     }
 }

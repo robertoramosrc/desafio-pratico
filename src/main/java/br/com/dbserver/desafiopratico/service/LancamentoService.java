@@ -5,10 +5,13 @@ import br.com.dbserver.desafiopratico.repository.LancamentoRepository;
 import exceptions.NegocioException;
 import exceptions.RegistroNaoExisteException;
 import org.modelmapper.ModelMapper;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class LancamentoService {
@@ -24,8 +27,14 @@ public class LancamentoService {
         this.mapper = mapper;
     }
 
-    public List<Lancamento> listar(){
-        return this.lancamentoRepository.findAllOrderByData();
+    public List<Lancamento> listar(Optional<Long> conta){
+        Lancamento lancamento = new Lancamento();
+
+        if(conta.isPresent()){
+            lancamento.setConta(this.contaCorrenteService.buscarPorId(conta.get()));
+        }
+
+        return this.lancamentoRepository.findAll(Example.of(lancamento));
     }
 
     public Lancamento buscarPorId(Long Id){
@@ -43,10 +52,6 @@ public class LancamentoService {
     private void validarDataLancamento(Lancamento lancamento){
         if(lancamento.getData() == null){
             throw new NegocioException("Data do lançamento não preenchida.");
-        }
-
-        if (lancamento.getData().isBefore(LocalDate.now())) {
-            throw new NegocioException("A data do lançamento não deve ser anterior a data atual.");
         }
 
     }

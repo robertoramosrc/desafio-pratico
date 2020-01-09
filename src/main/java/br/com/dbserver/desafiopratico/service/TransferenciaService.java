@@ -8,6 +8,9 @@ import br.com.dbserver.desafiopratico.model.Transferencia;
 import exceptions.NegocioException;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.TemporalUnit;
 
 @Service
 public class TransferenciaService {
@@ -27,7 +30,7 @@ public class TransferenciaService {
                 this.contaCorrenteService.buscarPorCodigoContaCorrente(transferenciaDTO.getContaOrigem()));
         transferencia.setContaDestino(
                 this.contaCorrenteService.buscarPorCodigoContaCorrente(transferenciaDTO.getContaDestino()));
-        transferencia.setData(transferenciaDTO.getData());
+        transferencia.setData(LocalDateTime.now());
         transferencia.setValor(transferenciaDTO.getValor());
 
         this.validarSaldoDisponivelParaTransferencia(transferencia);
@@ -45,10 +48,11 @@ public class TransferenciaService {
         lancamento.setTipoLancamento(TipoLancamento.DEBITO);
         lancamento.setConta(transferencia.getContaOrigem());
         lancamento.setValor(transferencia.getValor());
-        lancamento.setData(transferencia.getData());
+        lancamento.setData(LocalDateTime.now());
         lancamento.setDescricao(new StringBuffer()
-                .append("Débito referente transferência para ")
+                .append("Débito referente transferência para a Conta (")
                 .append(transferencia.getContaDestino().getDescricao())
+                .append(")")
                 .toString());
 
         this.lancamentoService.gerarLancamentoEmContaCorrente(lancamento);
@@ -63,8 +67,9 @@ public class TransferenciaService {
         lancamento.setValor(transferencia.getValor());
         lancamento.setData(transferencia.getData());
         lancamento.setDescricao(new StringBuffer()
-                .append("Crédito transfererido de ")
+                .append("Crédito referente transferência da Conta (")
                 .append(transferencia.getContaOrigem().getDescricao())
+                .append(")")
                 .toString());
 
         this.lancamentoService.gerarLancamentoEmContaCorrente(lancamento);

@@ -14,6 +14,7 @@ public class ContaCorrente {
 
     @Id
     @Column(name = "CD_CONTA")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long conta;
 
     @Column(name = "NM_CORRENTISTA")

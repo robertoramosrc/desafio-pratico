@@ -44,7 +44,7 @@ public class ContaCorrenteEndpoint {
     }
 
     @GetMapping("/{numero}")
-    @ApiOperation("Realiza a consulta usando o Número da Conta Corrente")
+    @ApiOperation("Consulta pelo Número da Conta Corrente")
     public ResponseEntity<ContaCorrenteDTO> buscarPorId(
             @ApiParam("Código da Conta Corrente")
             @PathVariable Long numero) {

@@ -4,13 +4,14 @@ import br.com.dbserver.desafiopratico.model.TipoLancamento;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class LancamentoDTO {
     private Long Id;
-    private TipoLancamento tipoLancamento;
-    private LocalDate data;
-    private BigDecimal valor;
     private Long conta;
+    private TipoLancamento tipoLancamento;
+    private LocalDateTime data;
+    private BigDecimal valor;
     private Long agencia;
     private String correntista;
     private String descricao;
@@ -23,6 +24,14 @@ public class LancamentoDTO {
         Id = id;
     }
 
+    public Long getConta() {
+        return conta;
+    }
+
+    public void setConta(Long conta) {
+        this.conta = conta;
+    }
+
     public TipoLancamento getTipoLancamento() {
         return tipoLancamento;
     }
@@ -31,11 +40,11 @@ public class LancamentoDTO {
         this.tipoLancamento = tipoLancamento;
     }
 
-    public LocalDate getData() {
+    public LocalDateTime getData() {
         return data;
     }
 
-    public void setData(LocalDate data) {
+    public void setData(LocalDateTime data) {
         this.data = data;
     }
 
@@ -45,14 +54,6 @@ public class LancamentoDTO {
 
     public void setValor(BigDecimal valor) {
         this.valor = valor;
-    }
-
-    public Long getConta() {
-        return conta;
-    }
-
-    public void setConta(Long conta) {
-        this.conta = conta;
     }
 
     public Long getAgencia() {

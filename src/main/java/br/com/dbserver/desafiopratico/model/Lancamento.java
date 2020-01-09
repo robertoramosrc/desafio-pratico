@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "TB_LANCAMENTO")
@@ -20,7 +21,7 @@ public class Lancamento {
     private TipoLancamento tipoLancamento;
 
     @Column(name = "DT_LANCAMENTO")
-    private LocalDate data;
+    private LocalDateTime data;
 
     @Column(name = "VL_LANCAMENTO")
     private BigDecimal valor;
@@ -48,11 +49,11 @@ public class Lancamento {
         this.tipoLancamento = tipoLancamento;
     }
 
-    public LocalDate getData() {
+    public LocalDateTime getData() {
         return data;
     }
 
-    public void setData(LocalDate data) {
+    public void setData(LocalDateTime data) {
         this.data = data;
     }
 
