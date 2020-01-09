@@ -27,9 +27,9 @@ public class TransferenciaEndpoint {
     public ResponseEntity realizarTransferenciaEntreContasCorrentes(
             @Valid @RequestBody TransferenciaDTO transferenciaDTO){
 
-        Transferencia transferencia = this.transferenciaService.realizarTransferencia(transferenciaDTO);
+        this.transferenciaService.realizarTransferencia(transferenciaDTO);
 
-        return ResponseEntity.ok(transferencia);
+        return ResponseEntity.ok(transferenciaDTO);
 
     }
 
