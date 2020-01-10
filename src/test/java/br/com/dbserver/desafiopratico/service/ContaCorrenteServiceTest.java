@@ -5,7 +5,6 @@ import br.com.dbserver.desafiopratico.model.ContaCorrente;
 import br.com.dbserver.desafiopratico.model.Lancamento;
 import br.com.dbserver.desafiopratico.model.TipoLancamento;
 import br.com.dbserver.desafiopratico.repository.ContaCorrenteRepository;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,8 +12,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
-import java.util.List;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;

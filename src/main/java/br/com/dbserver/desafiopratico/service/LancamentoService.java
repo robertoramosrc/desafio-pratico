@@ -18,13 +18,13 @@ public class LancamentoService {
 
     private final LancamentoRepository lancamentoRepository;
     private final ContaCorrenteService contaCorrenteService;
-    private final ModelMapper mapper;
 
 
-    public LancamentoService(LancamentoRepository lancamentoRepository, ContaCorrenteService contaCorrenteService, ModelMapper mapper) {
+    public LancamentoService(LancamentoRepository lancamentoRepository,
+                             ContaCorrenteService contaCorrenteService) {
         this.lancamentoRepository = lancamentoRepository;
         this.contaCorrenteService = contaCorrenteService;
-        this.mapper = mapper;
+
     }
 
     public List<Lancamento> listar(Optional<Long> conta){
@@ -42,14 +42,14 @@ public class LancamentoService {
                 .orElseThrow(() -> new RegistroNaoExisteException("Lançamento não encontrado."));
     }
 
-    public Lancamento gerarLancamentoEmContaCorrente(Lancamento lancamento){
+    public Lancamento gerarLancamentoEmContaCorrente(Lancamento lancamento) throws NegocioException{
         this.validarDataLancamento(lancamento);
 
         this.contaCorrenteService.atualizarSaldoContaCorrente(lancamento);
         return this.lancamentoRepository.save(lancamento);
     }
 
-    private void validarDataLancamento(Lancamento lancamento){
+    private void validarDataLancamento(Lancamento lancamento) throws NegocioException{
         if(lancamento.getData() == null){
             throw new NegocioException("Data do lançamento não preenchida.");
         }
