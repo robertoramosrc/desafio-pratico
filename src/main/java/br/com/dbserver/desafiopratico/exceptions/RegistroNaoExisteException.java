@@ -1,4 +1,4 @@
-package exceptions;
+package br.com.dbserver.desafiopratico.exceptions;
 
 public class RegistroNaoExisteException extends RuntimeException {
 

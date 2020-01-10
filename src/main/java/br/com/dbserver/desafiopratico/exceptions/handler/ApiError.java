@@ -1,4 +1,4 @@
-package exceptions.handler;
+package br.com.dbserver.desafiopratico.exceptions.handler;
 
 public class ApiError {
 

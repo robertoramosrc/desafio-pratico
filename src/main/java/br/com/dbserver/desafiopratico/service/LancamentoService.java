@@ -2,8 +2,8 @@ package br.com.dbserver.desafiopratico.service;
 
 import br.com.dbserver.desafiopratico.model.Lancamento;
 import br.com.dbserver.desafiopratico.repository.LancamentoRepository;
-import exceptions.NegocioException;
-import exceptions.RegistroNaoExisteException;
+import br.com.dbserver.desafiopratico.exceptions.NegocioException;
+import br.com.dbserver.desafiopratico.exceptions.RegistroNaoExisteException;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;

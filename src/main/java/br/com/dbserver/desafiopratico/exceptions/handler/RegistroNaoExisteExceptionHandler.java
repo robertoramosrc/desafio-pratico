@@ -1,6 +1,6 @@
-package exceptions.handler;
+package br.com.dbserver.desafiopratico.exceptions.handler;
 
-import exceptions.RegistroNaoExisteException;
+import br.com.dbserver.desafiopratico.exceptions.RegistroNaoExisteException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

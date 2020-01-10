@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface ContaCorrenteRepository extends JpaRepository <ContaCorrente, Long>  {
 
-    @Query("select c from ContaCorrente c where c.conta = :codigoConta ")
-    Optional<ContaCorrente> buscarPorCodigoDaConta(@Param("codigoConta") Long conta);
-
+    @Query("select c from ContaCorrente c where c.agencia = :codigoAgencia and c.conta = :codigoConta ")
+    Optional<ContaCorrente> buscarPorCodigosDaAgenciaEConta(@Param("codigoAgencia") Long agencia,
+                                                            @Param("codigoConta") Long conta);
 }

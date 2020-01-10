@@ -1,16 +1,15 @@
 package br.com.dbserver.desafiopratico.service;
 
 import br.com.dbserver.desafiopratico.dto.TransferenciaDTO;
+import br.com.dbserver.desafiopratico.exceptions.RegistroNaoExisteException;
 import br.com.dbserver.desafiopratico.model.ContaCorrente;
 import br.com.dbserver.desafiopratico.model.Lancamento;
 import br.com.dbserver.desafiopratico.model.TipoLancamento;
 import br.com.dbserver.desafiopratico.model.Transferencia;
-import exceptions.NegocioException;
+import br.com.dbserver.desafiopratico.exceptions.NegocioException;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.temporal.TemporalUnit;
 
 @Service
 public class TransferenciaService {
@@ -22,18 +21,21 @@ public class TransferenciaService {
         this.contaCorrenteService = contaCorrenteService;
     }
 
-    public Transferencia realizarTransferencia(TransferenciaDTO transferenciaDTO) {
+    public Transferencia realizarTransferencia(TransferenciaDTO transferenciaDTO) throws RegistroNaoExisteException {
 
         Transferencia transferencia = new Transferencia();
 
         transferencia.setContaOrigem(
-                this.contaCorrenteService.buscarPorCodigoContaCorrente(transferenciaDTO.getContaOrigem()));
+                this.contaCorrenteService.buscarPorCodigosDaAgenciaEContaCorrente(
+                        transferenciaDTO.getAgenciaOrigem(),
+                        transferenciaDTO.getContaOrigem()));
         transferencia.setContaDestino(
-                this.contaCorrenteService.buscarPorCodigoContaCorrente(transferenciaDTO.getContaDestino()));
+                this.contaCorrenteService.buscarPorCodigosDaAgenciaEContaCorrente(
+                        transferenciaDTO.getAgenciaDestino(),
+                        transferenciaDTO.getContaDestino()));
+
         transferencia.setData(LocalDateTime.now());
         transferencia.setValor(transferenciaDTO.getValor());
-
-        this.validarSaldoDisponivelParaTransferencia(transferencia);
 
         this.gerarLancamentoDebitoNaContaOrigem(transferencia);
         this.gerarLancamentoCreditoNaContaDestino(transferencia);
@@ -76,12 +78,4 @@ public class TransferenciaService {
 
     }
 
-    private void validarSaldoDisponivelParaTransferencia(Transferencia transferencia) {
-        ContaCorrente contaCorrente = transferencia.getContaOrigem();
-
-        if (contaCorrente.getSaldo().compareTo(transferencia.getValor()) < 0) {
-            throw new NegocioException("Saldo insuficiente para realizar a transferência.");
-        }
-
-    }
 }

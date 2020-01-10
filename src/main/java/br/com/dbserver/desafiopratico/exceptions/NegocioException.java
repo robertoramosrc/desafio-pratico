@@ -1,7 +1,4 @@
-package exceptions;
-
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
+package br.com.dbserver.desafiopratico.exceptions;
 
 public class NegocioException extends RuntimeException {
     public NegocioException(String message) {

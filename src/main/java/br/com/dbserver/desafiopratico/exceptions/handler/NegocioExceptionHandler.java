@@ -1,6 +1,6 @@
-package exceptions.handler;
+package br.com.dbserver.desafiopratico.exceptions.handler;
 
-import exceptions.NegocioException;
+import br.com.dbserver.desafiopratico.exceptions.NegocioException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
