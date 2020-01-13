@@ -1,7 +1,6 @@
-package br.com.dbserver.desafiopratico.api;
+package br.com.dbserver.desafiopratico.endpoint;
 
 import br.com.dbserver.desafiopratico.dto.TransferenciaDTO;
-import br.com.dbserver.desafiopratico.model.Transferencia;
 import br.com.dbserver.desafiopratico.service.TransferenciaService;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;

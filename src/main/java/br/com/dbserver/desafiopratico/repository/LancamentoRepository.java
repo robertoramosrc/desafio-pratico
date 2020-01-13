@@ -8,7 +8,4 @@ import java.util.List;
 
 public interface LancamentoRepository extends JpaRepository<Lancamento, Long> {
 
-    @Query("select l from Lancamento l order by l.data desc")
-    List<Lancamento> findAllOrderByData();
-
 }

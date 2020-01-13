@@ -1,4 +1,4 @@
-package br.com.dbserver.desafiopratico.api;
+package br.com.dbserver.desafiopratico.endpoint;
 
 import br.com.dbserver.desafiopratico.dto.LancamentoDTO;
 import br.com.dbserver.desafiopratico.service.LancamentoService;

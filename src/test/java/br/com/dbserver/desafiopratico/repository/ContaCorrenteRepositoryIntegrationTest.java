@@ -11,7 +11,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Optional;
 
-@DataJpaTest
 @ExtendWith(SpringExtension.class)
 @Sql(value="classpath:sql/limpa_base.sql",
         executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)

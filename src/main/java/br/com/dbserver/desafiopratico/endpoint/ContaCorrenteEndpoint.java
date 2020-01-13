@@ -1,4 +1,4 @@
-package br.com.dbserver.desafiopratico.api;
+package br.com.dbserver.desafiopratico.endpoint;
 
 import br.com.dbserver.desafiopratico.dto.ContaCorrenteDTO;
 import br.com.dbserver.desafiopratico.model.ContaCorrente;
