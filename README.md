@@ -1,5 +1,20 @@
 #Desafio prático
 
+#Considerações
+
+- O que vale ser destacado:
+    - Utilização de Stream para conversão de dados, entre DTOs e objetos da camada de Service
+    - Respeito a arquitetura por camadas
+    - Tratamento de exceções a nivel das APIs via Handler
+    - Além dos Testes unitários , foram realizados testes de Contexto e End to End  
+
+- O que poderia ser melhorado na próxima versão:
+    - Persistência das transferências realizadas, para consultas de acompanhamento
+    - Agendamento de Transferências em data futura 
+    - Criar a possibilidade de extorno de lançamentos
+
+
+#Escopo do Desafio
 Nesse desafio, você desenvolverá um serviço que faz parte de uma API bancária.
 Para o escopo do desafio, você deverá criar um serviço que realize uma operação de transferência entre contas correntes. 
 A operação de transferência é realizada informando-se uma conta de débito (origem), uma conta de crédito (destino) e o valor a ser transferido.
