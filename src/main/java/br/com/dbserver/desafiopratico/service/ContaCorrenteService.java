@@ -91,7 +91,7 @@ public class ContaCorrenteService {
                                                           Lancamento lancamento) throws NegocioException  {
 
         if (contaCorrente.getSaldo().compareTo(lancamento.getValor()) < 0) {
-            throw new NegocioException("Saldo insuficiente para realização do débito.");
+            throw new NegocioException("Saldo insuficiente na conta");
         }
 
     }
