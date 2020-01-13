@@ -25,8 +25,6 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Optional;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-
 @WebMvcTest(controllers = ContaCorrenteEndpoint.class)
 @ExtendWith(SpringExtension.class)
 @Import(ModelMappingConfig.class)
