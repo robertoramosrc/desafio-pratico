@@ -30,6 +30,7 @@ public class ContaCorrenteEndpoint {
     }
 
     @GetMapping
+    @ApiOperation("Consultar Conta Cossrente pelo Número/Agencia ou sem filtro. ")
     public ResponseEntity<List<ContaCorrenteDTO>> listar(
             @RequestParam("agencia") Optional<Long> agencia,
             @RequestParam("conta") Optional<Long> conta) {
@@ -58,6 +59,7 @@ public class ContaCorrenteEndpoint {
 
 
     @PostMapping
+    @ApiOperation("Criar uma Conta Corrente")
     public ResponseEntity<ContaCorrenteDTO> criar(
             @Valid @RequestBody ContaCorrenteDTO contaCorrenteDTO) {
 

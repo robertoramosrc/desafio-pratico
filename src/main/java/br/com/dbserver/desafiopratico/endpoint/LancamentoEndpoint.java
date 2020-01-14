@@ -2,6 +2,7 @@ package br.com.dbserver.desafiopratico.endpoint;
 
 import br.com.dbserver.desafiopratico.dto.LancamentoDTO;
 import br.com.dbserver.desafiopratico.service.LancamentoService;
+import io.swagger.annotations.ApiOperation;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,7 @@ public class LancamentoEndpoint {
         this.mapper = mapper;
     }
 
+    @ApiOperation("Consulta lancamentos [Conta Corrente é opcional]")
     @GetMapping
     public ResponseEntity<List<LancamentoDTO>> listar(
             @RequestParam("conta") Optional<Long> conta ) {
