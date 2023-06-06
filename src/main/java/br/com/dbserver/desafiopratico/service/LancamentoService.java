@@ -1,17 +1,15 @@
 package br.com.dbserver.desafiopratico.service;
 
-import br.com.dbserver.desafiopratico.model.Lancamento;
-import br.com.dbserver.desafiopratico.repository.LancamentoRepository;
-import br.com.dbserver.desafiopratico.exceptions.NegocioException;
-import br.com.dbserver.desafiopratico.exceptions.RegistroNaoExisteException;
-import org.modelmapper.ModelMapper;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
+import br.com.dbserver.desafiopratico.exceptions.NegocioException;
+import br.com.dbserver.desafiopratico.exceptions.RegistroNaoExisteException;
+import br.com.dbserver.desafiopratico.model.Lancamento;
+import br.com.dbserver.desafiopratico.repository.LancamentoRepository;
 
 @Service
 public class LancamentoService {

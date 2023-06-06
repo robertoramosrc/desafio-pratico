@@ -1,24 +1,29 @@
 package br.com.dbserver.desafiopratico.endpoint;
 
-import br.com.dbserver.desafiopratico.dto.ContaCorrenteDTO;
-import br.com.dbserver.desafiopratico.model.ContaCorrente;
-import br.com.dbserver.desafiopratico.service.ContaCorrenteService;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import org.modelmapper.ModelMapper;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import br.com.dbserver.desafiopratico.dto.ContaCorrenteDTO;
+import br.com.dbserver.desafiopratico.model.ContaCorrente;
+import br.com.dbserver.desafiopratico.service.ContaCorrenteService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+
 @RestController
 @RequestMapping("/contas")
-@Validated
 public class ContaCorrenteEndpoint {
 
     private final ContaCorrenteService contaCorrenteService;
@@ -30,7 +35,7 @@ public class ContaCorrenteEndpoint {
     }
 
     @GetMapping
-    @ApiOperation("Consultar Conta Cossrente pelo Número/Agencia ou sem filtro. ")
+    @Operation(description = "Consultar Conta Cossrente pelo Número/Agencia ou sem filtro. ")
     public ResponseEntity<List<ContaCorrenteDTO>> listar(
             @RequestParam("agencia") Optional<Long> agencia,
             @RequestParam("conta") Optional<Long> conta) {
@@ -45,9 +50,10 @@ public class ContaCorrenteEndpoint {
     }
 
     @GetMapping("/{numero}")
-    @ApiOperation("Consulta pelo Número da Conta Corrente")
+    @Operation(description = "Consulta pelo Número da Conta Corrente")
+    
     public ResponseEntity<ContaCorrenteDTO> buscarPorId(
-            @ApiParam("Código da Conta Corrente")
+            @Parameter(description = "Código da Conta Corrente")
             @PathVariable Long numero) {
 
         ContaCorrenteDTO contaCorrenteDTO =
@@ -59,9 +65,9 @@ public class ContaCorrenteEndpoint {
 
 
     @PostMapping
-    @ApiOperation("Criar uma Conta Corrente")
+    @Operation(description = "Criar uma Conta Corrente")
     public ResponseEntity<ContaCorrenteDTO> criar(
-            @Valid @RequestBody ContaCorrenteDTO contaCorrenteDTO) {
+            @Validated @RequestBody ContaCorrenteDTO contaCorrenteDTO) {
 
         ContaCorrente contaCorrente = this.mapper.map(contaCorrenteDTO, ContaCorrente.class);
 

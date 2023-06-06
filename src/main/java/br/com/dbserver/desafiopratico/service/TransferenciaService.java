@@ -1,15 +1,14 @@
 package br.com.dbserver.desafiopratico.service;
 
+import java.time.LocalDateTime;
+
+import org.springframework.stereotype.Service;
+
 import br.com.dbserver.desafiopratico.dto.TransferenciaDTO;
 import br.com.dbserver.desafiopratico.exceptions.RegistroNaoExisteException;
-import br.com.dbserver.desafiopratico.model.ContaCorrente;
 import br.com.dbserver.desafiopratico.model.Lancamento;
 import br.com.dbserver.desafiopratico.model.TipoLancamento;
 import br.com.dbserver.desafiopratico.model.Transferencia;
-import br.com.dbserver.desafiopratico.exceptions.NegocioException;
-import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
 
 @Service
 public class TransferenciaService {

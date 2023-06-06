@@ -1,9 +1,11 @@
 package br.com.dbserver.desafiopratico.dto;
 
-import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
+
+@Data
 public class TransferenciaDTO {
     @NotNull(message = "Informe o número da Agência de Origem")
     private Long agenciaOrigem;
@@ -19,46 +21,5 @@ public class TransferenciaDTO {
 
     @NotNull(message = "Informe o valor a ser transferido")
     private BigDecimal valor;
-
-    public Long getAgenciaOrigem() {
-        return agenciaOrigem;
-    }
-
-    public void setAgenciaOrigem(Long agenciaOrigem) {
-        this.agenciaOrigem = agenciaOrigem;
-    }
-
-    public Long getAgenciaDestino() {
-        return agenciaDestino;
-    }
-
-    public void setAgenciaDestino(Long agenciaDestino) {
-        this.agenciaDestino = agenciaDestino;
-    }
-
-    public Long getContaOrigem() {
-        return contaOrigem;
-    }
-
-    public void setContaOrigem(Long contaOrigem) {
-        this.contaOrigem = contaOrigem;
-    }
-
-    public Long getContaDestino() {
-        return contaDestino;
-    }
-
-    public void setContaDestino(Long contaDestino) {
-        this.contaDestino = contaDestino;
-    }
-
-    public BigDecimal getValor() {
-        return valor;
-    }
-
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
-    }
-
 }
 

@@ -1,14 +1,23 @@
 package br.com.dbserver.desafiopratico.model;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.*;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.Data;
 
 @Entity
 @Table(name = "TB_LANCAMENTO")
+@Data
 public class Lancamento {
 
     @Id
@@ -33,51 +42,4 @@ public class Lancamento {
     @JoinColumn(name = "ID_CONTA_CORRENTE")
     private ContaCorrente conta;
 
-    public Long getId() {
-        return Id;
-    }
-
-    public void setId(Long id) {
-        Id = id;
-    }
-
-    public TipoLancamento getTipoLancamento() {
-        return tipoLancamento;
-    }
-
-    public void setTipoLancamento(TipoLancamento tipoLancamento) {
-        this.tipoLancamento = tipoLancamento;
-    }
-
-    public LocalDateTime getData() {
-        return data;
-    }
-
-    public void setData(LocalDateTime data) {
-        this.data = data;
-    }
-
-    public BigDecimal getValor() {
-        return valor;
-    }
-
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
-    }
-
-    public ContaCorrente getConta() {
-        return conta;
-    }
-
-    public void setConta(ContaCorrente conta) {
-        this.conta = conta;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
 }

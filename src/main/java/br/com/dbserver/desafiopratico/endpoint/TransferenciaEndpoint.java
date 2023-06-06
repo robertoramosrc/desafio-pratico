@@ -2,16 +2,14 @@ package br.com.dbserver.desafiopratico.endpoint;
 
 import br.com.dbserver.desafiopratico.dto.TransferenciaDTO;
 import br.com.dbserver.desafiopratico.service.TransferenciaService;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.Operation;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
-
 @RestController
-@Validated
 @RequestMapping("/transferencias")
 public class TransferenciaEndpoint {
 
@@ -23,10 +21,10 @@ public class TransferenciaEndpoint {
         this.mapper = mapper;
     }
 
-    @ApiOperation("Realiza a transferência de valores entre duas contas")
+    @Operation(description = "Realiza a transferência de valores entre duas contas")
     @PostMapping
     public ResponseEntity realizarTransferenciaEntreContasCorrentes(
-            @Valid @RequestBody TransferenciaDTO transferenciaDTO){
+            @Validated @RequestBody TransferenciaDTO transferenciaDTO){
 
         this.transferenciaService.realizarTransferencia(transferenciaDTO);
 

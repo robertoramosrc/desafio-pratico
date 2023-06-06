@@ -76,7 +76,7 @@ public class ContaCorrenteServiceTest {
         NegocioException e = assertThrows(NegocioException.class,
                 () -> contaCorrenteService.atualizarSaldoContaCorrente(lancamento));
 
-        assertEquals("Saldo insuficiente para realização do débito.",
+        assertEquals("Saldo insuficiente na conta",
                 e.getMessage());
 
     }

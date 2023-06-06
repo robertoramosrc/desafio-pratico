@@ -1,15 +1,18 @@
 package br.com.dbserver.desafiopratico.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.Entity;
-import javax.persistence.*;
-import javax.persistence.Table;
 import java.math.BigDecimal;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Data;
 
 @Entity
 @Table(name="TB_CONTA")
-
+@Data
 public class ContaCorrente {
 
     @Id
@@ -35,37 +38,4 @@ public class ContaCorrente {
                 .append(this.getCorrentista())
                 .toString();
     }
-
-    public String getCorrentista() {
-        return correntista;
-    }
-
-    public void setCorrentista(String correntista) {
-        this.correntista = correntista;
-    }
-
-    public Long getAgencia() {
-        return agencia;
-    }
-
-    public void setAgencia(Long agencia) {
-        this.agencia = agencia;
-    }
-
-    public Long getConta() {
-        return conta;
-    }
-
-    public void setConta(Long conta) {
-        this.conta = conta;
-    }
-
-    public BigDecimal getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(BigDecimal saldo) {
-        this.saldo = saldo;
-    }
-
 }
